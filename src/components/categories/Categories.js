@@ -1,9 +1,9 @@
 import React from "react";
+import { Card, CardImg, Container, Row, Col } from "reactstrap";
+import "../css/styles.css";
 import { Link } from "react-router-dom";
 
-
-export default function CategoriesPage() {
- 
+export default function Categories() {
   const imageBaseUrl = "https://images.unsplash.com/photo-";
   const imageParameters = "?auto=format&fit=crop&w=375&q=80";
   const dataSource = [
@@ -22,23 +22,30 @@ export default function CategoriesPage() {
     { category: "Galeri", imageId: "1500051638674-ff996a0ec29e" },
     { category: "Video", imageId: "1524253482453-3fed8d2fe12b" },
   ];
+
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <ul style={{ display: "flex", flexWrap: "wrap", maxWidth: "400px" }}>
-        {dataSource.map((item) => (
-          <li key={item.category}>
-            <Link to={"/category/" + item.category}>
-              <div className="cat-img-box">
-                <h4 className="category-title">{item.category}</h4>
-                <img
-                  src={imageBaseUrl + item.imageId + imageParameters}
-                  alt={item.category}
-                ></img>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+
+    
+    <Row >
+      {dataSource.map((data) => (
+        <Col xs="3" key={data.category}>
+          <Link to={"/category/" + data.category}>
+            <div className="card">
+              <h4 >{data.category}</h4>
+              <Card >
+               <CardImg 
+                  
+                 src={imageBaseUrl + data.imageId + imageParameters}
+                alt={data.category}
+              />
+              </Card>
+            </div>
+          </Link>
+          </Col>
+      ))}
+      </Row>
+    
+  
+
   );
 }

@@ -3,8 +3,8 @@ import axios from "axios";
 
 const language = "tr";
 const API_KEY = "f63270d84d6948238ff09ccb43a9fa46";
-export function getnewspageSuccess(categories){
-    return {type:actionTypes.GET_NEWSPAGE_SUCCESS,payload:categories}
+export function getNewsPageSuccess(category){
+    return {type:actionTypes.GET_NEWSPAGE_SUCCESS,payload:category}
 }
 export function getNews(category){
     return async(dispatch)=>{
